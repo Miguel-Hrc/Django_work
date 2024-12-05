@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1><a href='/'> <button> Retour</button> </a></h1>
+    <h1>Espace bibliothécaire</h1>
+    <h2>Liste des emprunters</h2>
+    <ul>
+         {% for EmprunterObj in EmprunterObj %}
+             <a href='/modifier/{{ EmprunterObj.id }}/'>
+                <li> Nom : {{ EmprunterObj.name }}<br/>
+                     Nombre d'emprunt : {{ EmprunterObj.nb_Emprunt}}<br/>
+                 {% if EmprunterObj.bloque == True %}
+                    Bloqué : <input type="checkbox" checked/><br/>
+                 {% else %}
+                    Bloqué : <input type="checkbox" /><br/>
+                 {% endif %}
+                </li><br/>
+             </a>
+         {% endfor %}
+         <a href='/ajouter_emprunter/'> <button> ajouter emprunter </button> </a>
+    </ul>
+    <h2>Liste des medias</h2>
+    <h3>Liste des livres</h3>
+    <ul>
+         {% for LivreObj in LivreObj %}
+            {% if LivreObj.nb_EmpruntLivre >= 1 %}
+                <strike><li> Nom : {{LivreObj.name}} <br/> Auteur : {{LivreObj.auteur}} </li></strike><br/>  
+            {% else %}
+                <li>Nom : {{LivreObj.name}} <br/> Auteur : {{LivreObj.auteur}} </li><br/>
+            {% endif %}
+         {% endfor %}
+    </ul> 
+    <h3>Liste des cd</h3>
+    <ul>
+        {% for CdObj in CdObj %}
+           {% if CdObj.nb_EmpruntCd >= 1 %}
+               <strike><li> Nom : {{CdObj.name}} <br/> Artiste : {{CdObj.artiste}} </li></strike><br/>  
+           {% else %}
+               <li>Nom : {{CdObj.name}} <br/> Artiste : {{CdObj.artiste}} </li><br/>
+           {% endif %}
+        {% endfor %}
+   </ul> 
+    <h3>Liste des dvd</h3>
+    <ul>
+        {% for DvdObj in DvdObj %}
+           {% if DvdObj.nb_EmpruntDvd >= 1 %}
+               <strike><li> Nom : {{DvdObj.name}} <br/> Réalisateur : {{DvdObj.realisateur}} </li></strike><br/>  
+           {% else %}
+               <li>Nom : {{DvdObj.name}} <br/> Réalisateur : {{DvdObj.realisateur}} </li><br/>
+           {% endif %}
+        {% endfor %}
+   </ul>  
+    <h3>Liste des jeux de plateau</h3>
+    <ul>
+        {% for GameObj in GameObj %}
+               <li>Nom : {{GameObj.name}} <br/> Createur : {{GameObj.createur}} </li><br/>
+            </a>
+        {% endfor %}
+    </ul> 
+    <h2>Emprunt</Ri:a></h2>
+    <h3>Emprunt de livre</h3>
+    <ul>
+         {% for LivreObj in LivreObj %}
+             <a href='/modifier_b/{{ LivreObj.id }}/'>
+                <li>
+                    {% if LivreObj.nb_EmpruntLivre >= 1 %}
+                        <p><strike>{{LivreObj.name}} </strike> <br/> 
+                            Emprunté par : {{LivreObj.emprunter}} 
+                            <br/> Le  : {{LivreObj.dateEmprunt}}
+                            <br/> Doit être rendu le : {{LivreObj.dateBack}}</p>
+                    {% else %}
+                        <p>{{LivreObj.name}}</p>
+                    {% endif %}
+                </li>
+                <br/>
+             </a>
+         {% endfor %}
+         <a href='/ajouter_livre/'> <button> ajouter livre </button> </a>
+    </ul> 
+    <h3>Emprunt de cd</h3>
+    <ul>
+         {% for CdObj in CdObj %}
+             <a href='/modifier_c/{{ CdObj.id }}/'>
+                <li>
+                    {% if CdObj.nb_EmpruntCd >= 1 %}
+                        <p><strike>{{CdObj.name}} </strike> <br/> 
+                            Emprunté par : {{CdObj.emprunter}} 
+                            <br/> Le  : {{CdObj.dateEmprunt}}
+                            <br/> Doit être rendu le : {{CdObj.dateBack}}</p>
+                    {% else %}
+                        <p>{{CdObj.name}}</p>
+                    {% endif %}
+                </li>
+                <br/>
+            </a>
+         {% endfor %}
+         <a href='/ajouter_cd/'> <button> ajouter cd </button> </a>
+    </ul>
+    <h3>Emprunt de dvd</h3>
+    <ul>
+         {% for DvdObj in DvdObj %}
+             <a href='/modifier_d/{{ DvdObj.id }}/'>
+                <li>
+                    {% if DvdObj.nb_EmpruntDvd >= 1 %}
+                        <p><strike>{{DvdObj.name}} </strike> <br/> 
+                            Emprunté par : {{DvdObj.emprunter}} 
+                            <br/> Le  : {{DvdObj.dateEmprunt}}
+                            <br/> Doit être rendu le : {{DvdObj.dateBack}}</p>
+                    {% else %}
+                        <p>{{DvdObj.name}}</p>
+                    {% endif %}
+                </li>
+                <br/>
+            </a>
+         {% endfor %}
+         <a href='/ajouter_dvd/'> <button> ajouter dvd </button> </a>
+    </ul>
+    <h3>Liste des jeux de plateau</h3>
+    <ul>
+         {% for GameObj in GameObj %}
+             <a href='/modifier_g/{{ GameObj.id }}/'>
+                <li>
+                    <p>{{GameObj.name}}</p>
+                </li>
+                <br/>
+            </a>
+         {% endfor %}
+         <a href='/ajouter_game/'> <button> ajouter jeux de plateau</button> </a>
+    </ul>
+</body>
+</html>

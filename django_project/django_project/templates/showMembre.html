@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1><a href='/'> <button> Retour</button> </a></h1>
+    <h1>Espace membre</h1>
+    <h2>Liste des medias</h2>
+    <h3>Liste des livres</h3>
+    <ul>
+         {% for LivreObj in LivreObj %}
+            {% if LivreObj.nb_EmpruntLivre >= 1 %}
+                <strike><li> Nom : {{LivreObj.name}} <br/> Auteur : {{LivreObj.auteur}} </li></strike><br/>  
+            {% else %}
+                <li>Nom : {{LivreObj.name}} <br/> Auteur : {{LivreObj.auteur}} </li><br/>
+            {% endif %}
+         {% endfor %}
+    </ul> 
+    <h3>Liste des cd</h3>
+    <ul>
+        {% for CdObj in CdObj %}
+           {% if CdObj.nb_EmpruntCd >= 1 %}
+               <strike><li> Nom : {{CdObj.name}} <br/> Artiste : {{CdObj.artiste}} </li></strike><br/>  
+           {% else %}
+               <li>Nom : {{CdObj.name}} <br/> Artiste : {{CdObj.artiste}} </li><br/>
+           {% endif %}
+        {% endfor %}
+   </ul> 
+    <h3>Liste des dvd</h3>
+    <ul>
+        {% for DvdObj in DvdObj %}
+           {% if DvdObj.nb_EmpruntDvd >= 1 %}
+               <strike><li> Nom : {{DvdObj.name}} <br/> Réalisateur : {{DvdObj.realisateur}} </li></strike><br/>  
+           {% else %}
+               <li>Nom : {{DvdObj.name}} <br/> Réalisateur : {{DvdObj.realisateur}} </li><br/>
+           {% endif %}
+        {% endfor %}
+   </ul>  
+    <h3>Liste des jeux de plateau</h3>
+    <ul>
+        {% for GameObj in GameObj %}
+               <li>Nom : {{GameObj.name}} <br/> Createur : {{GameObj.createur}} </li><br/>
+            </a>
+        {% endfor %}
+    </ul> 
+</body>
+</html>
